@@ -1,0 +1,25 @@
+{
+  "name": "home/todolist",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "App\\Controller\\": "Controller/",
+      "App\\Infrastructure\\Db\\": "Infrastructure/Db/",
+      "App\\Infrastructure\\Logger\\": "Infrastructure/Logger/",
+      "App\\Service\\": "Service/",
+      "App\\Service\\Dto\\": "Service/Dto/",
+      "App\\Service\\Entity\\": "Service/Entity/",
+      "App\\Validator\\": "Service/Validator/"
+    }
+  },
+  "authors": [
+    {
+      "name": "anton goleusov",
+      "email": "antongoleusov@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-pdo": "*",
+    "ext-json": "*"
+  }
+}
