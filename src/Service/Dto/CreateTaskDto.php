@@ -5,10 +5,10 @@ namespace App\Service\Dto;
 
 class CreateTaskDto
 {
-    private string $topic;
-    private string $description;
-    private int $status;
-    private int $priority;
+    public string $topic;
+    public string $description;
+    public int $status;
+    public int $priority;
 
     public function __construct(...$data) {
         $this->topic = $data['topic'];

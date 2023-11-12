@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Infrastructure\Http\Request;
 use App\Service\Dto\CreateTaskDto;
+use App\Service\TaskService;
 
 class TaskController extends AbstractController
 {
@@ -20,26 +21,27 @@ class TaskController extends AbstractController
         if ($this->request->getMethod() === Request::PUT && $this->request->getCommand() === self::CREATE) {
             $data = $this->request->getBody();
             $createTask = new CreateTaskDto(...$data);
-
-            $answerService->create($createTask);
+            $taskService = new TaskService($createTask);
+            $taskService->create($createTask);
             return true;
         }
-//        if ($_SERVER["REQUEST_METHOD"] === "GET" && $arrayUri[2] === 'readAnswer') {
-//            $answerService = new AnswerService($jsonBody);
-//            $result = $answerService->read($jsonBody);
-//            return true;
-//        }
-//        if ($_SERVER["REQUEST_METHOD"] === "PATCH" && $arrayUri[2] === 'updateAnswer') {
-//            $answerService = new AnswerService($jsonBody);
-//            $result = $answerService->update($jsonBody);
-//            return true;
-//        }
-//        if ($_SERVER["REQUEST_METHOD"] === "DELETE" && $arrayUri[2] === 'deleteAnswer') {
-//            // вызвать метод deleteAnswer
-//            $answerService = new AnswerService($jsonBody);
-//            $result = $answerService->delete($jsonBody);
-//            return true;
-//        }
+        if ($_SERVER["REQUEST_METHOD"] === Request::GET && $this->request->getCommand() === self::READ) {
+            $taskService = new TaskService();
+            $taskService->read($taskId);
+            return true;
+        }
+        if ($_SERVER["REQUEST_METHOD"] === Request::PATCH && $this->request->getCommand() === self::UPDATE ) {
+            $createTask = new CreateTaskDto(...$data);
+            $taskService = new TaskService($createTask);
+            $taskService->update($createTask, $taskId);
+            return true;
+        }
+        if ($_SERVER["REQUEST_METHOD"] === Request::DELETE && $this->request->getCommand() === self::DELETE) {
+            // вызвать метод deleteAnswer
+            $taskService = new TaskService();
+            $taskService->delete($taskId);
+            return true;
+        }
         return false;
     }
 }

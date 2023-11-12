@@ -5,5 +5,8 @@ namespace App\Infrastructure\Db;
 
 class Db
 {
-  //  Настойки подключения к базе
+    public const DSN = 'pgsql:host=127.0.0.1;dbname=postgres';
+    public const USERNAME = 'postgres';
+    public const PASSWORD = 'postgres';
+
 }

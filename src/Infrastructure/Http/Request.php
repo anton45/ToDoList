@@ -11,8 +11,8 @@ class Request
     private string $method;
 
     public const PUT = 'PUT';
-    public const POST = 'PATCH';
-    public const UPDATE = 'GET';
+    public const PATCH = 'PATCH';
+    public const GET = 'GET';
     public const DELETE = 'DELETE';
 
     public function __construct(string $input)
