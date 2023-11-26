@@ -8,10 +8,24 @@ use App\Infrastructure\Db\QueryBuilder;
 
 class TaskRepository
 {
-    public function save(TaskEntity $taskEntity): bool
+    public function __construct() {
+        $this->query = new QueryBuilder(TaskEntity::TABLE_NAME);
+    }
+
+    public function save(TaskEntity $taskEntity)
     {
-        $query = new QueryBuilder();
-        $query->save($taskEntity);
-        return true;
+        $this->query->save($taskEntity);
+    }
+
+    public function find() {
+        return $this->query->find();
+    }
+
+    public function findBy($params) {
+        return $this->query->findBy($params);
+    }
+
+    public function update($set, $params) {
+        $this->query->update($set, $params);
     }
 }

@@ -16,6 +16,7 @@ class TaskEntity
     private int $priority;
     private int $createDate;
     private int $updateDate;
+    private int $isActive;
 
 //    public function getId(): string
 //    {

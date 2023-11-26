@@ -8,5 +8,4 @@ class Db
     public const DSN = 'pgsql:host=127.0.0.1;dbname=postgres';
     public const USERNAME = 'postgres';
     public const PASSWORD = 'postgres';
-
 }

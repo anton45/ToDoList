@@ -31,15 +31,13 @@ class TaskController extends AbstractController
             return true;
         }
         if ($_SERVER["REQUEST_METHOD"] === Request::PATCH && $this->request->getCommand() === self::UPDATE ) {
-            $createTask = new CreateTaskDto(...$data);
-            $taskService = new TaskService($createTask);
-            $taskService->update($createTask, $taskId);
+            $taskService = new TaskService();
+            $taskService->update($data, $taskId);
             return true;
         }
         if ($_SERVER["REQUEST_METHOD"] === Request::DELETE && $this->request->getCommand() === self::DELETE) {
-            // вызвать метод deleteAnswer
             $taskService = new TaskService();
-            $taskService->delete($taskId);
+            $taskService->deactivate($taskId);
             return true;
         }
         return false;
